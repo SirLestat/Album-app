@@ -1,48 +1,64 @@
 import { useEffect, useState } from "react";
-import getUser from "./helpers/getUser";
+import { getUser } from "./helpers/getUser";
+import { Box, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 
 export const Albums = () => {
   const [users, setUsers] = useState([]);
+  const [search, setSearch] = "";
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedUsers = await getUser();
-      setUsers(fetchedUsers);
+      const data = await getUser();
+
+      setUsers(data);
     };
     fetchData();
   }, []);
 
   return (
-    <div>
-      <ul style={{ listStyle: "none" }}>
+    
+    <Box sx={{ width: "100%", mt: "20px" }}>
+      
+      <Grid container spacing={3}>
         {users.map((user) => {
           return (
-            <li
-              key={user.id}
-              style={{
-                display:"",
-                backgroundColor: "#629584",
+            <Grid size={{xs: 12}}
+              sx={{
+                alignItems: "center",
+                backgroundColor: "#15393C",
+                borderRadius: 5,
                 borderStyle: "solid",
-                marginBottom: "20px",
-                borderRadius: 20,
-                marginRight: "20px",
+                borderColor: "#1E7981",
+                padding: "20px",
+                
               }}
+              key={user.id}
             >
-              
-              <h2 style={{ color: "white", margin: "20px" }}>
-                <img src="src\assets\cheems.jpg" alt="profile image" style={{borderRadius:"50%", width:"80px", height:"80px"}} /> {user.username}
-              </h2>
-              
-              <p style={{ color: "white", margin: "20px" }}>
-                <strong>Nombre:</strong> {user.name}
-              </p>
-              <p style={{ color: "white", margin: "20px" }}>
-                <strong>Email:</strong> {user.email}
-              </p>
-            </li>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <img
+                  src="src\assets\cheems.jpg"
+                  alt="profile image"
+                  style={{ borderRadius: "50%", width: "80px", height: "80px" }}
+                />
+
+                <Typography sx={{ color: "#FFF", marginLeft: "20px" }}>
+                  {user.username}
+                </Typography>
+              </Box>
+
+              <Box sx={{ color: "#FFF", marginTop: "10px" }}>
+                <Typography>
+                  <strong>Usuario:</strong> {user.name}
+                </Typography>
+                <Typography>
+                  <strong>Email:</strong> {user.email}
+                </Typography>
+              </Box>
+            </Grid>
           );
         })}
-      </ul>
-    </div>
+      </Grid>
+    </Box>
   );
 };

@@ -1,6 +1,7 @@
 import { Box, TextField } from "@mui/material";
 
 export default function SearchBar() {
+
   return (
     <Box
       sx={{
@@ -8,7 +9,7 @@ export default function SearchBar() {
         display: "flex",
         justifyContent: "center",
         borderRadius: 3,
-        pt:"40px"
+        pt:"20px"
       }}
     >
       <form>
