@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 
 const Layout = () => {
   return (
-    <Box sx={{ backgroundColor: "#131717", minHeight: "100vh", margin: 0 }}>
+    <Box sx={{ backgroundColor: "#0D1012", minHeight: "100vh", margin: 0 }}>
       <Container>
         <SearchBar />
         <Albums />

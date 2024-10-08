@@ -26,9 +26,10 @@ export const Albums = () => {
             <Grid size={{xs: 12}}
               sx={{
                 alignItems: "center",
-                backgroundColor: "#15393C",
+                backgroundColor: "#2C363B",
                 borderRadius: 5,
                 borderStyle: "solid",
+                borderWidth: "2px",
                 borderColor: "#1E7981",
                 padding: "20px",
                 
