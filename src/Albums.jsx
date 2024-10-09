@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { getUser } from "./helpers/getUser";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 
-export const Albums = () => {
+const Albums = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = "";
 
@@ -17,13 +17,36 @@ export const Albums = () => {
   }, []);
 
   return (
-    
-    <Box sx={{ width: "100%", mt: "20px" }}>
-      
+    <Box sx={{ width: "100%" }}>
+      <Box
+        sx={{
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
+          borderRadius: 3,
+          pt: "20px",
+          marginBottom: "20px",
+        }}
+      >
+        <form>
+          <TextField
+            sx={{
+              borderRadius: 3,
+              backgroundColor: "#FFF",
+              "& > :not(style)": { width: "50ch" },
+            }}
+            variant="filled"
+            placeholder="Buscar usuario"
+            fullWidth
+          ></TextField>
+        </form>
+      </Box>
+
       <Grid container spacing={3}>
         {users.map((user) => {
           return (
-            <Grid size={{xs: 12}}
+            <Grid
+              size={{ xs: 12 }}
               sx={{
                 alignItems: "center",
                 backgroundColor: "#15393C",
@@ -31,7 +54,6 @@ export const Albums = () => {
                 borderStyle: "solid",
                 borderColor: "#1E7981",
                 padding: "20px",
-                
               }}
               key={user.id}
             >
@@ -62,3 +84,5 @@ export const Albums = () => {
     </Box>
   );
 };
+
+export default Albums;
