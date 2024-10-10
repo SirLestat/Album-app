@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { getUser } from "./helpers/getUser";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 
-export const Albums = () => {
+const Albums = () => {
   const [users, setUsers] = useState([]);
-  const [search, setSearch] = "";
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,50 +16,96 @@ export const Albums = () => {
     fetchData();
   }, []);
 
+  const filteredUsers = (users, search) => {
+    return users.filter(
+      (user) =>
+        user.username.toLowerCase().includes(search.toLowerCase()) ||
+        user.name.toLowerCase().includes(search.toLowerCase()) ||
+        user.email.toLowerCase().includes(search.toLowerCase())
+    );
+  };
+
+  const handleSearchChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const filtered = filteredUsers(users, search);
   return (
-    
-    <Box sx={{ width: "100%", mt: "20px" }}>
-      
-      <Grid container spacing={3}>
-        {users.map((user) => {
-          return (
-            <Grid size={{xs: 12}}
-              sx={{
-                alignItems: "center",
-                backgroundColor: "#2C363B",
-                borderRadius: 5,
-                borderStyle: "solid",
-                borderWidth: "2px",
-                borderColor: "#1E7981",
-                padding: "20px",
-                
-              }}
-              key={user.id}
-            >
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <img
-                  src="src\assets\cheems.jpg"
-                  alt="profile image"
-                  style={{ borderRadius: "50%", width: "80px", height: "80px" }}
-                />
-
-                <Typography sx={{ color: "#FFF", marginLeft: "20px" }}>
-                  {user.username}
-                </Typography>
-              </Box>
-
-              <Box sx={{ color: "#FFF", marginTop: "10px" }}>
-                <Typography>
-                  <strong>Usuario:</strong> {user.name}
-                </Typography>
-                <Typography>
-                  <strong>Email:</strong> {user.email}
-                </Typography>
-              </Box>
-            </Grid>
-          );
-        })}
+    <Grid container spacing={3} py={6}>
+      <Grid component="form" size={6} offset={3} mb={3}>
+        <TextField
+          sx={{
+            borderRadius: 2,
+            backgroundColor: "#F5F5F5",
+            "& .MuiInputBase-input": {
+              display: "flex",
+              alignItems: "center",
+              padding: "10px 14px",
+            },
+          }}
+          placeholder="Buscar usuario"
+          variant="filled"
+          onChange={handleSearchChange}
+          value={search}
+          autoComplete="off"
+          fullWidth
+        ></TextField>
       </Grid>
-    </Box>
+
+      {filtered.map((user) => {
+        return (
+          <Grid
+            size={{ xs: 12 }}
+            sx={{
+              alignItems: "center",
+              backgroundColor: "#1E3A3A",
+              borderRadius: 5,
+              borderStyle: "solid",
+              borderColor: "#2C5454",
+              padding: "20px",
+            }}
+            key={user.id}
+          >
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <img
+                src="src\assets\cheems.jpg"
+                alt="profile image"
+                style={{ borderRadius: "50%", width: "80px", height: "80px" }}
+              />
+
+              <Typography sx={{ color: "#FFF", marginLeft: "20px", fontSize:"22px", fontWeight: 700  }}>
+                {user.username}
+              </Typography>
+            </Box>
+
+            <Grid sx={{ color: "#FFF", marginTop: "10px" }}>
+              <Typography>
+                <strong>Usuario:</strong> {user.name}
+              </Typography>
+              <Typography>
+                <strong>Email:</strong> {user.email}
+              </Typography>
+              
+            </Grid>
+
+            <Grid container justifyContent={"flex-end"}>
+              <Button
+                sx={{
+                  backgroundColor: "#2A9D8F", 
+                  color: "#FFF",
+                  "&:hover": {
+                    backgroundColor: "#21867A",
+                  },
+                }}
+              >
+                Ver álbumes
+              </Button>
+            </Grid>
+          </Grid>
+        );
+      })}
+    </Grid>
   );
 };
+
+export default Albums;
