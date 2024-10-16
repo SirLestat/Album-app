@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { getUser } from "./helpers/getUser";
+import { getUser } from "../helpers/getUser";
 import { Box, Typography, Button, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import { useNavigate } from "react-router-dom";
 
-const Albums = () => {
+const Users = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +32,10 @@ const Albums = () => {
   };
 
   const filtered = filteredUsers(users, search);
+
+  const handleNavigation = () => {
+    navigate("/Albums");
+  };
   return (
     <Grid container spacing={3} py={6}>
       <Grid component="form" size={6} offset={3} mb={3}>
@@ -73,7 +79,14 @@ const Albums = () => {
                 style={{ borderRadius: "50%", width: "80px", height: "80px" }}
               />
 
-              <Typography sx={{ color: "#FFF", marginLeft: "20px", fontSize:"22px", fontWeight: 700  }}>
+              <Typography
+                sx={{
+                  color: "#FFF",
+                  marginLeft: "20px",
+                  fontSize: "22px",
+                  fontWeight: 700,
+                }}
+              >
                 {user.username}
               </Typography>
             </Box>
@@ -85,13 +98,13 @@ const Albums = () => {
               <Typography>
                 <strong>Email:</strong> {user.email}
               </Typography>
-              
             </Grid>
 
             <Grid container justifyContent={"flex-end"}>
               <Button
+                onClick={handleNavigation}
                 sx={{
-                  backgroundColor: "#2A9D8F", 
+                  backgroundColor: "#2A9D8F",
                   color: "#FFF",
                   "&:hover": {
                     backgroundColor: "#21867A",
@@ -108,4 +121,4 @@ const Albums = () => {
   );
 };
 
-export default Albums;
+export default Users;
