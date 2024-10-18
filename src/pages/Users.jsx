@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getUser } from "../helpers/getUser";
 import { Box, Typography, Button, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -33,8 +33,8 @@ const Users = () => {
 
   const filtered = filteredUsers(users, search);
 
-  const handleNavigation = () => {
-    navigate("/Albums");
+  const handleNavigation = (userId) => {
+    navigate(`/${userId}/albums`);
   };
   return (
     <Grid container spacing={3} py={6}>
@@ -102,16 +102,19 @@ const Users = () => {
 
             <Grid container justifyContent={"flex-end"}>
               <Button
-                onClick={handleNavigation}
+                
+                onClick={() => handleNavigation(user.id)}
                 sx={{
                   backgroundColor: "#2A9D8F",
                   color: "#FFF",
                   "&:hover": {
                     backgroundColor: "#21867A",
                   },
+                  textTransform: "none",
                 }}
               >
-                Ver álbumes
+                Álbumes
+                {/* <Link to="/albums" style={{textDecoration:"none", color:"white"}}>Albumes</Link> */}
               </Button>
             </Grid>
           </Grid>

@@ -1,19 +1,18 @@
 import { CssBaseline } from "@mui/material";
 import Layout from "./components/Layout";
-import { Route, Routes } from "react-router-dom";
-import Users from "./pages/Users";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Albums from "./pages/Albums";
 
 function App() {
   return (
     <div>
       <CssBaseline />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Users />} />
-          <Route path="Albums" element={<Albums />} />
-        </Route>
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />} />
+          <Route path="/:userId/albums" element={<Albums />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
