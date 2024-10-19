@@ -5,7 +5,7 @@ import Users from "../pages/Users";
 
 const Layout = () => {
   return (
-    <Box sx={{ backgroundColor: "#121212", minHeight: "100vh", margin: 0 }}>
+    <Box sx={{minHeight: "100vh", margin: 0 }}>
       <Container>
         <Users/>
       </Container>

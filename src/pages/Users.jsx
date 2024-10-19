@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { getUser } from "../helpers/getUser";
 import { Box, Typography, Button, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from "@emotion/react";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const theme = useTheme();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,6 +49,7 @@ const Users = () => {
               display: "flex",
               alignItems: "center",
               padding: "10px 14px",
+              color:theme.palette.text.secondary,
             },
           }}
           placeholder="Buscar usuario"
@@ -64,10 +67,10 @@ const Users = () => {
             size={{ xs: 12 }}
             sx={{
               alignItems: "center",
-              backgroundColor: "#1E3A3A",
+              backgroundColor: theme.palette.customColors.itemBackground,
               borderRadius: 5,
               borderStyle: "solid",
-              borderColor: "#2C5454",
+              borderColor: theme.palette.customColors.border,
               padding: "20px",
             }}
             key={user.id}
@@ -102,13 +105,12 @@ const Users = () => {
 
             <Grid container justifyContent={"flex-end"}>
               <Button
-                
                 onClick={() => handleNavigation(user.id)}
                 sx={{
-                  backgroundColor: "#2A9D8F",
+                  backgroundColor: theme.palette.customColors.button,
                   color: "#FFF",
                   "&:hover": {
-                    backgroundColor: "#21867A",
+                    backgroundColor: theme.palette.customColors.buttonHover,
                   },
                   textTransform: "none",
                 }}
