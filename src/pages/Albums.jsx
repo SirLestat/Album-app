@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getAlbums } from "../helpers/getAlbums";
 import { useEffect, useState } from "react";
 import {
@@ -12,7 +12,9 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
-
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import { useNavigate } from "react-router-dom";
+import profileIcon from "../assets/cheems.jpg";
 const Albums = () => {
   const { userId } = useParams();
   const [albums, setAlbums] = useState([]);
@@ -27,41 +29,84 @@ const Albums = () => {
     fetchData();
   }, []);
 
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/");
+  };
+
   return (
     <Container>
       <Grid container spacing={2}>
-        <Grid item size={12}>
+        <Grid size={12}>
           <Button
+            onClick={handleButtonClick}
             variant="contained"
             startIcon={<ArrowBackIosNewRoundedIcon />}
+            sx={{
+              backgroundColor: theme.palette.customColors.button,
+              textTransform: "none",
+              marginTop: "15px",
+              marginBottom: "15px",
+              "&:hover": {
+                backgroundColor: theme.palette.customColors.buttonHover,
+              },
+            }}
           >
-            <Link to="/">Regresar</Link>
+            Regresar
           </Button>
-
-          
 
           <Grid
             item
-            size={12}
+            xs={12}
             sx={{
               border: "solid",
-              borderColor: "green",
-              
+              borderColor: theme.palette.customColors.border,
+              height: "150px",
+              display: "flex",
+              alignItems: "center",
+              borderRadius: 3,
             }}
           >
-            <Typography>sdfsdfsdfsd</Typography>
+            <Grid
+              container
+              spacing={2}
+              sx={{
+                paddingLeft: "25px",
+                alignItems: "center",
+                direction: "row",
+              }}
+            >
+              <img
+                src={profileIcon}
+                alt="profile image"
+                style={{ borderRadius: "50%", width: "80px", height: "80px" }}
+              />
+              <Grid>
+                <Typography
+                  sx={{
+                    color: "#FFF",
+                    fontSize: "22px",
+                    fontWeight: 700,
+                  }}
+                >
+                  asdasd
+                </Typography>
+                <Typography>qqqqqqqqq</Typography>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
 
         {albums.map((item) => {
           return (
-            <Grid item size={{ xs: 12, sm: 6, md: 3 }} key={item.id}>
+            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={item.id}>
               <Card
                 sx={{
                   backgroundColor: theme.palette.customColors.itemBackground,
                   border: "solid",
                   borderColor: theme.palette.customColors.border,
-                  borderRadius: 2,
+                  borderRadius: 3,
                   display: "block",
                   height: "100%",
                 }}

@@ -68,7 +68,7 @@ const Users = () => {
             sx={{
               alignItems: "center",
               backgroundColor: theme.palette.customColors.itemBackground,
-              borderRadius: 5,
+              borderRadius: 3,
               borderStyle: "solid",
               borderColor: theme.palette.customColors.border,
               padding: "20px",
