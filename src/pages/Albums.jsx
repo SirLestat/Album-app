@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getAlbums } from "../helpers/getAlbums";
 import { useEffect, useState } from "react";
 import {
@@ -7,15 +7,18 @@ import {
   Container,
   Typography,
   useTheme,
-  Box,
   Button,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+
 import { useNavigate } from "react-router-dom";
 import profileIcon from "../assets/cheems.jpg";
+
 const Albums = () => {
+  const location = useLocation();
+  const { username, email, name } = location.state || {};
   const { userId } = useParams();
   const [albums, setAlbums] = useState([]);
   const theme = useTheme();
@@ -31,16 +34,12 @@ const Albums = () => {
 
   const navigate = useNavigate();
 
-  const handleButtonClick = () => {
-    navigate("/");
-  };
-
   return (
     <Container>
       <Grid container spacing={2}>
         <Grid size={12}>
           <Button
-            onClick={handleButtonClick}
+            onClick={() => navigate("/")}
             variant="contained"
             startIcon={<ArrowBackIosNewRoundedIcon />}
             sx={{
@@ -57,7 +56,6 @@ const Albums = () => {
           </Button>
 
           <Grid
-            item
             xs={12}
             sx={{
               border: "solid",
@@ -90,9 +88,20 @@ const Albums = () => {
                     fontWeight: 700,
                   }}
                 >
-                  asdasd
+                  {name}
                 </Typography>
-                <Typography>qqqqqqqqq</Typography>
+                <Typography
+                  sx={{
+                    color: "#FFF",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  @{username}
+                </Typography>
+                <Typography sx={{ display: "flex", alignItems: "center" }}>
+                  <EmailOutlinedIcon sx={{ mr: 1, fontSize: "20px" }} /> {email}
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
@@ -100,7 +109,7 @@ const Albums = () => {
 
         {albums.map((item) => {
           return (
-            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={item.id}>
+            <Grid size={{ xs: 12, sm:6, md: 4, lg: 3, xl: 3}} key={item.id}>
               <Card
                 sx={{
                   backgroundColor: theme.palette.customColors.itemBackground,
@@ -109,6 +118,12 @@ const Albums = () => {
                   borderRadius: 3,
                   display: "block",
                   height: "100%",
+                  transition:
+                    "transform 0.2s ease-in-out, border-color 0.2s ease-in-out",
+                  "&:hover": {
+                    transform: "translateY(-4px)",
+                    borderColor: theme.palette.customColors.button,
+                  },
                 }}
               >
                 <CardContent>

@@ -35,8 +35,10 @@ const Users = () => {
 
   const filtered = filteredUsers(users, search);
 
-  const handleNavigation = (userId) => {
-    navigate(`/${userId}/albums`);
+  const handleNavigation = (user) => {
+    navigate(`/${user.id}/albums`, {
+      state: { username: user.username, email: user.email, name: user.name },
+    });
   };
   return (
     <Grid container spacing={3} py={6}>
@@ -52,12 +54,12 @@ const Users = () => {
               color:theme.palette.text.secondary,
             },
           }}
-          placeholder="Buscar usuario"
-          variant="filled"
-          onChange={handleSearchChange}
-          value={search}
           autoComplete="off"
           fullWidth
+          onChange={handleSearchChange}
+          placeholder="Buscar usuario"
+          value={search}
+          variant="filled"
         ></TextField>
       </Grid>
 
@@ -105,7 +107,7 @@ const Users = () => {
 
             <Grid container justifyContent={"flex-end"}>
               <Button
-                onClick={() => handleNavigation(user.id)}
+                onClick={() => handleNavigation(user)}
                 sx={{
                   backgroundColor: theme.palette.customColors.button,
                   color: "#FFF",
