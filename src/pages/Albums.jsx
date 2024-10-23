@@ -109,7 +109,7 @@ const Albums = () => {
 
         {albums.map((item) => {
           return (
-            <Grid size={{ xs: 12, sm:6, md: 4, lg: 3, xl: 3}} key={item.id}>
+            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 3 }} key={item.id}>
               <Card
                 sx={{
                   backgroundColor: theme.palette.customColors.itemBackground,
@@ -126,7 +126,10 @@ const Albums = () => {
                   },
                 }}
               >
-                <CardContent>
+                <CardContent
+                  onClick={() => navigate(`${albumId}/photos`)}
+                  sx={{ cursor: "pointer" }}
+                >
                   <Typography variant="h5" mb="30px">
                     Albúm {item.id}
                   </Typography>
