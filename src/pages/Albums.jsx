@@ -11,10 +11,10 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 
 import { useNavigate } from "react-router-dom";
 import profileIcon from "../assets/cheems.jpg";
+import { UserInfo } from "../components/UserInfo";
 
 const Albums = () => {
   const location = useLocation();
@@ -55,56 +55,13 @@ const Albums = () => {
             Regresar
           </Button>
 
-          <Grid
-            xs={12}
-            sx={{
-              border: "solid",
-              borderColor: theme.palette.customColors.border,
-              height: "150px",
-              display: "flex",
-              alignItems: "center",
-              borderRadius: 3,
-            }}
-          >
-            <Grid
-              container
-              spacing={2}
-              sx={{
-                paddingLeft: "25px",
-                alignItems: "center",
-                direction: "row",
-              }}
-            >
-              <img
-                src={profileIcon}
-                alt="profile image"
-                style={{ borderRadius: "50%", width: "80px", height: "80px" }}
-              />
-              <Grid>
-                <Typography
-                  sx={{
-                    color: "#FFF",
-                    fontSize: "22px",
-                    fontWeight: 700,
-                  }}
-                >
-                  {name}
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "#FFF",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  @{username}
-                </Typography>
-                <Typography sx={{ display: "flex", alignItems: "center" }}>
-                  <EmailOutlinedIcon sx={{ mr: 1, fontSize: "20px" }} /> {email}
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
+          <UserInfo
+            name={name}
+            username={username}
+            email={email}
+            profileIcon={profileIcon}
+            theme={theme}
+          />
         </Grid>
 
         {albums.map((item) => {
@@ -127,7 +84,7 @@ const Albums = () => {
                 }}
               >
                 <CardContent
-                  onClick={() => navigate(`${albumId}/photos`)}
+                  onClick={() => navigate(`/${userId}/albums/${item.id}/photos`, {state: {username, email, name, profileIcon, userId}})}
                   sx={{ cursor: "pointer" }}
                 >
                   <Typography variant="h5" mb="30px">
