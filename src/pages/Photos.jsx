@@ -1,8 +1,7 @@
-import { Button, Container, Typography } from "@mui/material";
+import { Box, Button, Container } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getPhotos } from "../helpers/getPhotos";
-import { UserInfo } from "../components/UserInfo";
 import { useLocation } from "react-router-dom";
 import { CustomUserInfo } from "../components/CustomUserInfo";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
@@ -12,14 +11,23 @@ import { useNavigate } from "react-router-dom";
 export const Photos = () => {
   const [photos, setPhotos] = useState([]);
   const location = useLocation();
-  const { username, email, name, profileIcon, userId } = location.state || {};
+  const { username, email, name, profileIcon, userId, itemId } =
+    location.state || {};
   const theme = useTheme();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getPhotos(itemId);
+      setPhotos(data);
+    };
+    fetchData();
+  }, [itemId]);
+
   return (
     <Container>
-      <Grid container>
-        <Grid>
+      <Grid container size={12} spacing={2}>
+        <Grid size={12}>
           <Button
             onClick={() =>
               navigate(`/${userId}/albums`, {
@@ -47,7 +55,26 @@ export const Photos = () => {
         email={email}
         name={name}
         profileIcon={profileIcon}
+        itemId={itemId}
       />
+
+      <Grid container spacing={2}>
+        {photos.map((photo) => (
+          <Grid xs={2}  lg={6}key={photo.id}> 
+            
+              <img
+                src={photo.thumbnailUrl}
+                alt={`thumbnail${photo.id}`}
+                style={{ 
+                  width: "100%", 
+                  height: "100%", 
+                  borderRadius: "8px" 
+                }}
+              />
+            
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 };

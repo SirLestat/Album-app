@@ -84,7 +84,7 @@ const Albums = () => {
                 }}
               >
                 <CardContent
-                  onClick={() => navigate(`/${userId}/albums/photos/${item.id}`, {state: {username, email, name, profileIcon, userId}})}
+                  onClick={() => navigate(`/${userId}/albums/photos/${item.id}`, {state: {username, email, name, profileIcon, userId, itemId: item.id}})}
                   sx={{ cursor: "pointer" }}
                 >
                   <Typography variant="h5" mb="30px">
