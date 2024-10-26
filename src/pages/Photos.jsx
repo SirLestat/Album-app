@@ -7,6 +7,7 @@ import { CustomUserInfo } from "../components/CustomUserInfo";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import { useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { Panel } from "../components/Panel";
 
 export const Photos = () => {
   const [photos, setPhotos] = useState([]);
@@ -15,6 +16,7 @@ export const Photos = () => {
     location.state || {};
   const theme = useTheme();
   const navigate = useNavigate();
+  const [modalUrl, setModalUrl] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,20 +60,23 @@ export const Photos = () => {
         itemId={itemId}
       />
 
-      <Grid container spacing={2}>
+      <Panel url={modalUrl} />
+
+      <Grid container spacing={2} sx={{ mt: "15px", mb: "15px" }}>
         {photos.map((photo) => (
-          <Grid xs={2}  lg={6}key={photo.id}> 
-            
-              <img
-                src={photo.thumbnailUrl}
-                alt={`thumbnail${photo.id}`}
-                style={{ 
-                  width: "100%", 
-                  height: "100%", 
-                  borderRadius: "8px" 
-                }}
-              />
-            
+          <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={photo.id}>
+            <img
+              onClick={() => {
+                setModalUrl(photo.url);
+              }}
+              src={photo.thumbnailUrl}
+              alt={`thumbnail${photo.id}`}
+              style={{
+                width: "100%",
+                height: "100%",
+                borderRadius: "8px",
+              }}
+            />
           </Grid>
         ))}
       </Grid>
