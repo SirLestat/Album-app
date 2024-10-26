@@ -1,4 +1,4 @@
-import { Box, Button, Container } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useState, useEffect } from "react";
 import { getPhotos } from "../helpers/getPhotos";
@@ -16,7 +16,7 @@ export const Photos = () => {
     location.state || {};
   const theme = useTheme();
   const navigate = useNavigate();
-  const [modalUrl, setModalUrl] = useState(null);
+  const [modalData, setModalData] = useState({ url: null, title: null });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,18 +60,32 @@ export const Photos = () => {
         itemId={itemId}
       />
 
-      <Panel url={modalUrl} />
+      <Panel modalData={modalData} setModalData={setModalData} />
 
       <Grid container spacing={2} sx={{ mt: "15px", mb: "15px" }}>
         {photos.map((photo) => (
-          <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }} key={photo.id}>
+          <Grid
+            size={{ xs: 6, sm: 4, md: 3, lg: 2 }}
+            key={photo.id}
+            sx={{
+              transition:
+                "transform 0.2s ease-in-out, border-color 0.2s ease-in-out",
+              "&:hover": {
+                transform: "translateY(-4px)",
+                borderColor: "red",
+                border: "solid",
+                borderRadius: 3,
+              },
+            }}
+          >
             <img
               onClick={() => {
-                setModalUrl(photo.url);
+                setModalData({ url: photo.url, title: photo.title });
               }}
               src={photo.thumbnailUrl}
               alt={`thumbnail${photo.id}`}
               style={{
+                cursor: "pointer",
                 width: "100%",
                 height: "100%",
                 borderRadius: "8px",
