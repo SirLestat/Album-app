@@ -1,3 +1,5 @@
+import { IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import ReactDOM from "react-dom";
 
 export const Panel = ({ modalData, setModalData }) => {
@@ -8,7 +10,6 @@ export const Panel = ({ modalData, setModalData }) => {
           <div
             style={{
               top: "0",
-
               position: "fixed",
               width: "100%",
               backgroundColor: "rgba(0, 0, 0, 0.7)",
@@ -20,17 +21,44 @@ export const Panel = ({ modalData, setModalData }) => {
             }}
           >
             <div
-              style={{ display: "flex", flexDirection:"column", border: "solid", borderColor: "red", justifyContent:"center", alignItems:"center" }}
+              style={{
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                border: "solid 1px",
+                borderColor: "grey",
+                padding: "16px",
+                
+                backgroundColor: "#222",
+                borderRadius: "8px",
+              }}
             >
-              <img src={modalData.url} alt="photo" />
-              <p>{modalData.title}</p>
-              <button
-                onClick={() => {
-                  setModalData({ url: null, title: null });
+              <IconButton
+                onClick={() => setModalData({ url: null, title: null })}
+                style={{
+                  position: "absolute",
+                  top: "-20px",
+                  right: "-20px",
+                  color: "#FFF",
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
                 }}
               >
-                cerrar
-              </button>
+                <CloseIcon />
+              </IconButton>
+
+              <img
+                src={modalData.url}
+                alt="photo"
+                style={{
+                  borderRadius: "8px",
+                  
+                }}
+                
+                
+              />
+              
+              <p style={{marginBottom:"0px"}}>{modalData.title}</p>
             </div>
           </div>,
           document.querySelector("#portal")
