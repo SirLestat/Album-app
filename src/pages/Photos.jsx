@@ -68,13 +68,12 @@ export const Photos = () => {
             size={{ xs: 6, sm: 4, md: 3, lg: 2 }}
             key={photo.id}
             sx={{
-              transition:
-                "transform 0.2s ease-in-out, border-color 0.2s ease-in-out",
+              transition: "transform 0.1s ease-in-out, filter 0.1s ease-in-out",
               "&:hover": {
-                transform: "translateY(-4px)",
-                borderColor: "red",
-                border: "solid",
-                borderRadius: 3,
+                borderRadius: "12px",
+                transform: "scale(1.05)",
+                filter: "brightness(1.1)",
+                
               },
             }}
           >
@@ -88,7 +87,7 @@ export const Photos = () => {
                 cursor: "pointer",
                 width: "100%",
                 height: "100%",
-                borderRadius: "8px",
+                borderRadius: "12px",
               }}
             />
           </Grid>

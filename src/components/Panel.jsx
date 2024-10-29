@@ -1,8 +1,9 @@
-import { IconButton, Container, Box } from "@mui/material";
+import { IconButton, Container, Box, useTheme } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ReactDOM from "react-dom";
 
 export const Panel = ({ modalData, setModalData }) => {
+  const theme = useTheme();
   return (
     <div>
       {modalData.url &&
@@ -13,7 +14,7 @@ export const Panel = ({ modalData, setModalData }) => {
               position: "fixed",
               width: "100%",
               height: "100%",
-              backgroundColor: "rgba(0, 0, 0, 0.7)",
+              backgroundColor: "rgba(0, 0, 0, 0.8)",
               color: "#FFF",
               display: "flex",
               alignItems: "center",
@@ -28,15 +29,14 @@ export const Panel = ({ modalData, setModalData }) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                border: "1px solid grey",
-                padding: "16px",
-                backgroundColor: "#222",
-                borderRadius: "8px",
+                padding: "26px",
+                paddingBottom:"0px",
+                backgroundColor: "#121212",
+                border:`3px solid ${theme.palette.customColors.border}`,
+                borderRadius: "12px",
                 width: {
-                  xs: "70%", 
-                  sm: "80%",  
-                  md: "600px", 
-                  lg: "600px" 
+                  xs: "70%",
+                  sm: "70%",
                 },
               }}
             >
@@ -44,31 +44,32 @@ export const Panel = ({ modalData, setModalData }) => {
                 onClick={() => setModalData({ url: null, title: null })}
                 sx={{
                   position: "absolute",
-                  top: "-20px",
-                  right: "-20px",
+                  top: "-50px",
+                  right: "-50px",
                   color: "#FFF",
-                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  backgroundColor: "rgba(255, 255, 255, 0.2)",
+                  "&:hover": {backgroundColor:`${theme.palette.customColors.button}`}
+        
                 }}
               >
-                <CloseIcon />
+                <CloseIcon sx={{fontSize:"30px"}} />
               </IconButton>
 
               <img
                 src={modalData.url}
                 alt="photo"
                 style={{
-                  borderRadius: "8px",
+                  borderRadius: "12px",
                   width: "100%",
-                  height: "auto", 
-                  maxHeight: "70vh", 
+                  height: "auto",
+                  maxHeight: "70vh",
                   objectFit: "contain",
                 }}
               />
 
               <p
                 style={{
-                  marginBottom: "0px",
-                  marginTop: "8px",
+                  
                   textAlign: "center",
                 }}
               >

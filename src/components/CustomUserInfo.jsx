@@ -17,7 +17,7 @@ export const CustomUserInfo = ({
       sx={{
         border: "solid",
         borderColor: theme.palette.customColors.border,
-        borderRadius: 3,
+        borderRadius: "12px",
         display: "flex",
         flexDirection: "column",
         height: "100%",
