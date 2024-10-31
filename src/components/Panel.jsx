@@ -51,7 +51,7 @@ export const Panel = ({ modalData, setModalData }) => {
                 },
                 height: {
                   xs: "auto",
-                  sm: error ? "auto" : "500px",
+                  sm: error ? "auto" : "auto",
                   xl: error ? "auto" : "640px",
                 },
               }}
