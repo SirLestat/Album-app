@@ -2,13 +2,15 @@ import { IconButton, Container, Box, useTheme, Skeleton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 export const Panel = ({ modalData, setModalData }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
   const theme = useTheme();
 
   useEffect(() => {
-    modalData.url && setIsLoading(true);
+    modalData.url && setIsLoading(true), setError(false);
   }, [modalData.url]);
 
   return (
@@ -42,21 +44,21 @@ export const Panel = ({ modalData, setModalData }) => {
                 border: `3px solid ${theme.palette.customColors.border}`,
                 borderRadius: "12px",
                 width: {
-                  xs: "340px",
-                  md: "640px",
+                  xs: "35vh",
+                  md: error ? "auto" : "640px",
                 },
                 height: {
-                  xs:"40vh",
-                  md: "640px"
-                }
+                  xs: "auto",
+                  md: error ? "auto" : "640px",
+                },
               }}
             >
               <IconButton
                 onClick={() => setModalData({ url: null, title: null })}
                 sx={{
                   position: "absolute",
-                  top: "-40px",
-                  right: "-40px",
+                  top: "-50px",
+                  right: "0px",
                   color: "#FFF",
                   backgroundColor: "rgba(255, 255, 255, 0.2)",
                   "&:hover": {
@@ -64,20 +66,31 @@ export const Panel = ({ modalData, setModalData }) => {
                   },
                 }}
               >
-                <CloseIcon sx={{ fontSize: "25px" }} />
+                <CloseIcon sx={{ fontSize: "20px" }} />
               </IconButton>
 
-              {isLoading && (
-                <Skeleton
-                  variant="rectangular"
-                  width="100%"
-                  
-                  animation="wave"
-                  sx={{ borderRadius: "12px",height: {
-                    xs: "35vh",
-                    md: "546px",
-                  } }}
-                />
+              {error ? (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  <ErrorOutlineIcon sx={{fontSize:"35px"}} />
+                  <p>Error al cargar la imagen.</p>
+                </div>
+              ) : (
+                isLoading && (
+                  <Skeleton
+                    variant="rectangular"
+                    width="100%"
+                    
+                    animation="wave"
+                    sx={{ borderRadius: "12px",height:{xs: "30vh", md:"60vh"} }}
+                  />
+                )
               )}
 
               <img
@@ -92,15 +105,26 @@ export const Panel = ({ modalData, setModalData }) => {
                   display: isLoading ? "none" : "block",
                 }}
                 onLoad={() => setIsLoading(false)}
+                onError={() => setError(true)}
               />
 
-              <p
-                style={{
-                  textAlign: "center",
-                }}
-              >
-                {modalData.title}
-              </p>
+              {error ? null : isLoading ? (
+                <Skeleton
+                  variant="text"
+                  width="70%"
+                  animation="wave"
+                  sx={{ marginTop: "12px", marginBottom: "12px" }}
+                />
+              ) : (
+                <p
+                  style={{
+                    textAlign: "center",
+                    marginTop: "12px",
+                  }}
+                >
+                  {modalData.title}
+                </p>
+              )}
             </Container>
           </Box>,
           document.querySelector("#portal")
