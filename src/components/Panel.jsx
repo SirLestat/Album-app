@@ -45,11 +45,14 @@ export const Panel = ({ modalData, setModalData }) => {
                 borderRadius: "12px",
                 width: {
                   xs: "35vh",
-                  md: error ? "auto" : "640px",
+                  sm: error ? "auto" : "500px",
+                  xl: error ? "auto" : "640px",
+
                 },
                 height: {
                   xs: "auto",
-                  md: error ? "auto" : "640px",
+                  sm: error ? "auto" : "500px",
+                  xl: error ? "auto" : "640px",
                 },
               }}
             >
@@ -86,9 +89,8 @@ export const Panel = ({ modalData, setModalData }) => {
                   <Skeleton
                     variant="rectangular"
                     width="100%"
-                    
                     animation="wave"
-                    sx={{ borderRadius: "12px",height:{xs: "30vh", md:"60vh"} }}
+                    sx={{ borderRadius: "12px",height:{xs: "30vh", sm:"500px", xl:"600px"} }}
                   />
                 )
               )}
