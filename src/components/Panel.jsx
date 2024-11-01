@@ -47,7 +47,6 @@ export const Panel = ({ modalData, setModalData }) => {
                   xs: "35vh",
                   sm: error ? "auto" : "500px",
                   xl: error ? "auto" : "640px",
-
                 },
                 height: {
                   xs: "auto",
@@ -60,8 +59,8 @@ export const Panel = ({ modalData, setModalData }) => {
                 onClick={() => setModalData({ url: null, title: null })}
                 sx={{
                   position: "absolute",
-                  top: "-50px",
-                  right: "0px",
+                  top: { xl: "-40px", xs: "-55px", md:"-40px" },
+                  right: { xl: "-40px", xs: "0px", md:"-40px"},
                   color: "#FFF",
                   backgroundColor: "rgba(255, 255, 255, 0.2)",
                   "&:hover": {
@@ -69,7 +68,7 @@ export const Panel = ({ modalData, setModalData }) => {
                   },
                 }}
               >
-                <CloseIcon sx={{ fontSize: "20px" }} />
+                <CloseIcon sx={{ fontSize: "25px" }} />
               </IconButton>
 
               {error ? (
@@ -81,7 +80,7 @@ export const Panel = ({ modalData, setModalData }) => {
                     flexDirection: "column",
                   }}
                 >
-                  <ErrorOutlineIcon sx={{fontSize:"35px"}} />
+                  <ErrorOutlineIcon sx={{ fontSize: "35px" }} />
                   <p>Error al cargar la imagen.</p>
                 </div>
               ) : (
@@ -90,7 +89,10 @@ export const Panel = ({ modalData, setModalData }) => {
                     variant="rectangular"
                     width="100%"
                     animation="wave"
-                    sx={{ borderRadius: "12px",height:{xs: "30vh", sm:"500px", xl:"600px"} }}
+                    sx={{
+                      borderRadius: "12px",
+                      height: { xs: "30vh", sm: "500px", xl: "600px" },
+                    }}
                   />
                 )
               )}

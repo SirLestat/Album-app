@@ -8,11 +8,12 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 import { useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Panel } from "../components/Panel";
+import { Thumbnail } from "../components/Thumbnail";
 
 export const Photos = () => {
   const [photos, setPhotos] = useState([]);
   const location = useLocation();
-  const { username, email, name, profileIcon, userId, itemId } =
+  const { username, email, name, profileIcon, userId, itemId, thumbnailUrl } =
     location.state || {};
   const theme = useTheme();
   const navigate = useNavigate();
@@ -73,23 +74,10 @@ export const Photos = () => {
                 borderRadius: "12px",
                 transform: "scale(1.05)",
                 filter: "brightness(1.1)",
-                
               },
             }}
           >
-            <img
-              onClick={() => {
-                setModalData({ url: photo.url, title: photo.title });
-              }}
-              src={photo.thumbnailUrl}
-              alt={`thumbnail${photo.id}`}
-              style={{
-                cursor: "pointer",
-                width: "100%",
-                height: "100%",
-                borderRadius: "12px",
-              }}
-            />
+            <Thumbnail {...photo} setModalData={setModalData} />
           </Grid>
         ))}
       </Grid>
