@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
+
 export const Panel = ({ modalData, setModalData }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
