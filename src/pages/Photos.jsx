@@ -28,7 +28,7 @@ export const Photos = () => {
   }, [itemId]);
 
   return (
-    <Container>
+    <>
       <Grid container size={12} spacing={2}>
         <Grid size={12}>
           <Button
@@ -81,6 +81,6 @@ export const Photos = () => {
           </Grid>
         ))}
       </Grid>
-    </Container>
+    </>
   );
 };

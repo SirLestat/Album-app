@@ -1,16 +1,7 @@
-import { Box, Container } from "@mui/material";
-import Users from "../pages/Users";
+import { Container } from "@mui/material";
 
-
-
-const Layout = () => {
-  return (
-    <Box sx={{minHeight: "100vh", margin: 0 }}>
-      <Container>
-        <Users/>
-      </Container>
-    </Box>
-  );
+const Layout = ({ children }) => {
+  return <Container>{children}</Container>;
 };
 
 export default Layout;
