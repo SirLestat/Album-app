@@ -7,9 +7,7 @@ export const User = ({ user }) => {
   const navigate = useNavigate();
 
   const handleAlbumsClick = () => {
-    navigate(`/${user.id}/albums`, {
-      state: { username: user.username, email: user.email, name: user.name },
-    });
+    navigate(`/${user.id}/albums`);
   };
 
   return (

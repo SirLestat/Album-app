@@ -1,21 +1,18 @@
-import { Button, Container } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useState, useEffect } from "react";
-import { getPhotos } from "../helpers/getPhotos";
+import { getPhotos } from "../services/photos.service";
 import { useLocation } from "react-router-dom";
 import { CustomUserInfo } from "../components/CustomUserInfo";
-import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
-import { useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Panel } from "../components/Panel";
 import { Thumbnail } from "../components/Thumbnail";
+import { BackButton } from "../components/shared/BackButton";
 
 export const Photos = () => {
   const [photos, setPhotos] = useState([]);
   const location = useLocation();
   const { username, email, name, profileIcon, userId, itemId, thumbnailUrl } =
     location.state || {};
-  const theme = useTheme();
   const navigate = useNavigate();
   const [modalData, setModalData] = useState({ url: null, title: null });
 
@@ -31,26 +28,10 @@ export const Photos = () => {
     <>
       <Grid container size={12} spacing={2}>
         <Grid size={12}>
-          <Button
-            onClick={() =>
-              navigate(`/${userId}/albums`, {
-                state: { username, email, name, profileIcon, userId },
-              })
-            }
-            variant="contained"
-            startIcon={<ArrowBackIosNewRoundedIcon />}
-            sx={{
-              backgroundColor: theme.palette.customColors.button,
-              textTransform: "none",
-              marginTop: "15px",
-              marginBottom: "15px",
-              "&:hover": {
-                backgroundColor: theme.palette.customColors.buttonHover,
-              },
-            }}
-          >
-            Regresar
-          </Button>
+          <BackButton
+            to={`/${userId}/albums`}
+            state={{ username, email, name, profileIcon, userId }}
+          />
         </Grid>
       </Grid>
       <CustomUserInfo

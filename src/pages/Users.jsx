@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { getUser } from "../helpers/getUser";
+import { getUsers } from "../services/users.service";
 import Grid from "@mui/material/Grid2";
 import { SearchForm } from "../components/pages/SearchForm";
 import { User } from "../components/pages/User";
@@ -23,14 +23,12 @@ const Users = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getUser();
+      const data = await getUsers();
 
       setUsers(data);
     };
     fetchData();
   }, []);
-
-  
 
   return (
     <Grid container spacing={3} py={6}>

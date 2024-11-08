@@ -2,10 +2,23 @@ import Grid from "@mui/material/Grid2";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { useEffect, useState } from "react";
+import { getUserById } from "../services/users.service";
+import profileIcon from "../assets/cheems.jpg";
 
-export const UserInfo = ({ name, username, email, profileIcon }) => {
+export const UserInfo = ({ userId }) => {
   const theme = useTheme();
-  
+  const [user, setUser] = useState({ name: "", username: "", email: "" });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getUserById(userId);
+
+      setUser(data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <Grid
       xs={12}
@@ -40,7 +53,7 @@ export const UserInfo = ({ name, username, email, profileIcon }) => {
               fontWeight: 700,
             }}
           >
-            {name}
+            {user.name}
           </Typography>
           <Typography
             sx={{
@@ -49,10 +62,10 @@ export const UserInfo = ({ name, username, email, profileIcon }) => {
               alignItems: "center",
             }}
           >
-            @{username}
+            @{user.username}
           </Typography>
           <Typography sx={{ display: "flex", alignItems: "center" }}>
-            <EmailOutlinedIcon sx={{ mr: 1, fontSize: "20px" }} /> {email}
+            <EmailOutlinedIcon sx={{ mr: 1, fontSize: "20px" }} /> {user.email}
           </Typography>
         </Grid>
       </Grid>
