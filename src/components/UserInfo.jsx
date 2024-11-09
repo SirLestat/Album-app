@@ -11,6 +11,7 @@ export const UserInfo = ({ userId }) => {
   const [user, setUser] = useState({ name: "", username: "", email: "" });
 
   useEffect(() => {
+    console.log("ASDASDASD");
     const fetchData = async () => {
       const data = await getUserById(userId);
 

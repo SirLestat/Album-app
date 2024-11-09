@@ -7,14 +7,13 @@ export const BackButton = ({
   to = "/",
   text = "Regresar",
   icon = <ArrowBackIosNewRoundedIcon />,
-  state = {},
 }) => {
   const theme = useTheme();
   const navigate = useNavigate();
 
   return (
     <Button
-      onClick={() => navigate(to, state)}
+      onClick={() => navigate(to)}
       variant="contained"
       startIcon={icon}
       sx={{

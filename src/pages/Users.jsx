@@ -3,10 +3,12 @@ import { getUsers } from "../services/users.service";
 import Grid from "@mui/material/Grid2";
 import { SearchForm } from "../components/pages/SearchForm";
 import { User } from "../components/pages/User";
+import { LoadingIndicator } from "../components/shared/LoadingIndicator";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleSearchFormChange = (event) => {
     setSearch(event.target.value);
@@ -23,13 +25,16 @@ const Users = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const data = await getUsers();
-
       setUsers(data);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
-
+  if (isLoading) {
+    return <LoadingIndicator />;
+  }
   return (
     <Grid container spacing={3} py={6}>
       <Grid component="form" size={6} offset={3} mb={3}>
