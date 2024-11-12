@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid2";
-import { UserInfo } from "../components/UserInfo";
+import { UserInfo } from "../components/shared/UserInfo";
 import { useParams } from "react-router-dom";
 import { BackButton } from "../components/shared/BackButton";
 import { AlbumList } from "../components/pages/Albums/AlbumList";

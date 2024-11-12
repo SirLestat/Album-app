@@ -1,6 +1,7 @@
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useNavigate } from "react-router-dom";
+import { gravatar } from "../../helpers/gravatar";
 
 export const User = ({ user }) => {
   const theme = useTheme();
@@ -24,7 +25,7 @@ export const User = ({ user }) => {
     >
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <img
-          src="src\assets\cheems.jpg"
+          src={gravatar(user.email)}
           alt="profile image"
           style={{ borderRadius: "50%", width: "80px", height: "80px" }}
         />
