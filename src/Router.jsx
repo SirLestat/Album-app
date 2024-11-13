@@ -6,7 +6,7 @@ import Users from "./pages/Users";
 
 export const Router = () => {
   return (
-    <Layout>
+    <Layout >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Users />} />

@@ -4,7 +4,7 @@ import { Router } from "./Router.jsx";
 
 function App() {
   return (
-    <ThemeProvider theme={customTheme}>
+    <ThemeProvider theme={customTheme} >
       <CssBaseline />
       <Router />
     </ThemeProvider>

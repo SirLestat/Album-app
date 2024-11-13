@@ -1,7 +1,9 @@
-import { Box, Button, Typography, useTheme } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import { Box, Button, Typography, useTheme, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { gravatar } from "../../helpers/gravatar";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 
 export const User = ({ user }) => {
   const theme = useTheme();
@@ -12,61 +14,95 @@ export const User = ({ user }) => {
   };
 
   return (
-    <Grid
-      size={12}
+    <Box
+      
       sx={{
         alignItems: "center",
         backgroundColor: theme.palette.customColors.itemBackground,
         borderRadius: 3,
-        borderStyle: "solid",
+        border: "solid",
         borderColor: theme.palette.customColors.border,
-        padding: "20px",
+        padding: "40px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+        position: "relative", 
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+      
+      
+
+      
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          flexGrow: 1,
+          gap: "20px",
+        }}
+      >
         <img
           src={gravatar(user.email)}
           alt="profile image"
-          style={{ borderRadius: "50%", width: "80px", height: "80px" }}
+          style={{ borderRadius: "50%", width: "70px", height: "70px" }}
         />
+        <Box>
+          <Typography
+            sx={{
+              color: "#FFF",
+              fontSize: "22px",
+              fontWeight: 700,
+              marginBottom: "5px",
+            }}
+          >
+            {user.username}
+          </Typography>
 
-        <Typography
-          sx={{
-            color: "#FFF",
-            marginLeft: "20px",
-            fontSize: "22px",
-            fontWeight: 700,
-          }}
-        >
-          {user.username}
-        </Typography>
+          <Box sx={{ display: "flex", gap: "40px" }}>
+            <Typography
+              sx={{ display: "flex", alignItems: "center", gap: "5px" }}
+            >
+              <PersonOutlineOutlinedIcon  sx={{ fontSize: "20px" }}/>
+              {user.name}
+            </Typography>
+
+            <Typography
+              sx={{ display: "flex", alignItems: "center", gap: "5px" }}
+            >
+              <EmailOutlinedIcon sx={{ fontSize: "20px" }} />
+              {user.email}
+            </Typography>
+          </Box>
+        </Box>
       </Box>
 
-      <Grid sx={{ color: "#FFF", marginTop: "10px" }}>
-        <Typography>
-          <strong>Usuario:</strong> {user.name}
-        </Typography>
-        <Typography>
-          <strong>Email:</strong> {user.email}
-        </Typography>
-      </Grid>
+    
+      <Button
+        onClick={handleAlbumsClick}
+        sx={{
+          backgroundColor: theme.palette.customColors.button,
+          color: "#FFF",
+          "&:hover": {
+            backgroundColor: theme.palette.customColors.buttonHover,
+          },
+          textTransform: "none",
+          paddingRight: "",
+          marginRight: "15px",
+          gap: "5px",
+          display: "flex",
+          alignItems: "center",
 
-      <Grid container justifyContent={"flex-end"}>
-        <Button
-          onClick={handleAlbumsClick}
-          sx={{
-            backgroundColor: theme.palette.customColors.button,
-            color: "#FFF",
-            "&:hover": {
-              backgroundColor: theme.palette.customColors.buttonHover,
-            },
-            textTransform: "none",
-          }}
-        >
-          Álbumes
-          {/* <Link to="/albums" style={{textDecoration:"none", color:"white"}}>Albumes</Link> */}
-        </Button>
-      </Grid>
-    </Grid>
+          "@media (max-width: 750px)": {
+            width: "100%",
+            marginTop: "20px",
+          },
+        }}
+      >
+        <ImageOutlinedIcon />
+        Álbumes
+      </Button>
+    </Box>
   );
 };

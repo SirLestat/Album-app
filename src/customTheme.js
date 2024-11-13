@@ -1,3 +1,4 @@
+// customTheme.js
 import { createTheme } from "@mui/material";
 
 const customTheme = createTheme({
@@ -16,10 +17,24 @@ const customTheme = createTheme({
       secondary: "#212121",
     },
     customColors: {
-      border: "#2C5454",
-      itemBackground: "#1E3A3A",
+      border: "rgba(255, 255, 255, 0.1)",
+      itemBackground: "rgba(0, 0, 0, 0.4)",
       button: "#2A9D8F",
       buttonHover: "#21867A",
+    },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          background: "linear-gradient(10deg, #115e59 0%, #121212 100%)",
+          backgroundRepeat: "no-repeat",
+          margin: 0,
+          padding: 0,
+          height: "100%",
+          minHeight: "100vh ",
+        },
+      },
     },
   },
 });

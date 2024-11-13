@@ -6,7 +6,7 @@ import { getAlbums } from "../../../services/albums.service";
 
 export const AlbumList = ({ userId }) => {
   const [albums, setAlbums] = useState([]);
-  const [isLoading, setIsLoading] = useState()
+  
 
   useEffect(() => {
     const fetchData = async () => {
