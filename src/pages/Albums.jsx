@@ -13,7 +13,9 @@ const Albums = () => {
         <BackButton to="/" text="Regresar" />
         <UserInfo userId={userId} />
       </Grid>
-      <AlbumList userId={userId} />
+      <Grid size={12}>
+        <AlbumList userId={userId} />
+      </Grid>
     </Grid>
   );
 };

@@ -17,7 +17,7 @@ const customTheme = createTheme({
       secondary: "#212121",
     },
     customColors: {
-      border: "rgba(255, 255, 255, 0.1)",
+      border: "rgba(42, 157, 143, 0.4)",
       itemBackground: "rgba(0, 0, 0, 0.4)",
       button: "#2A9D8F",
       buttonHover: "#21867A",

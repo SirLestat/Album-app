@@ -11,7 +11,7 @@ export const AlbumCard = ({ item, userId }) => {
       <Card
         sx={{
           backgroundColor: theme.palette.customColors.itemBackground,
-          border: "solid",
+          border: "solid 1px",
           borderColor: theme.palette.customColors.border,
           borderRadius: 3,
           display: "block",

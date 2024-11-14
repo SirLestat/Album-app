@@ -24,27 +24,33 @@ export const UserList = ({ search }) => {
     };
     fetchData();
   }, []);
-  if (!users.length)
-    return (
-      <Grid container spacing={3} py={6}>
-        {createArray(10).map((item) => (
-          <Grid key={item} size={12}>
-            <Skeleton
-              variant="rectangular"
-              width="100%"
-              sx={{ borderRadius: 3, height: { xl: "156px" } }}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    );
+
   return (
     <Grid container spacing={3} py={6}>
-      {filtered.map((user) => (
-        <Grid key={user.id} size={12}>
-          <User user={user} />
-        </Grid>
-      ))}
+      {!users.length
+        ? createArray(10).map((item) => (
+            <Grid key={item} size={12}>
+              <Skeleton
+                variant="rectangular"
+                width="100%"
+                sx={{
+                  borderRadius: 3,
+                  height: {
+                    xs: "224.5px",
+                    sm: "208.5px",
+                    lg: "156px",
+                    md: "156px",
+                    xl: "156px",
+                  },
+                }}
+              />
+            </Grid>
+          ))
+        : filtered.map((user) => (
+            <Grid key={user.id} size={12}>
+              <User user={user} />
+            </Grid>
+          ))}
     </Grid>
   );
 };

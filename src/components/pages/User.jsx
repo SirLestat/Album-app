@@ -20,7 +20,7 @@ export const User = ({ user }) => {
         alignItems: "center",
         backgroundColor: theme.palette.customColors.itemBackground,
         borderRadius: 3,
-        border: "solid",
+        border: " 1px solid",
         borderColor: theme.palette.customColors.border,
         padding: "40px",
         display: "flex",
