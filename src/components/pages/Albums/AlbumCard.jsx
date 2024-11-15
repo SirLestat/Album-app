@@ -2,6 +2,7 @@ import { Card, CardContent, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useNavigate } from "react-router-dom";
 
+
 export const AlbumCard = ({ item, userId }) => {
   const theme = useTheme();
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export const AlbumCard = ({ item, userId }) => {
     <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 3 }}>
       <Card
         sx={{
-          backgroundColor: theme.palette.customColors.itemBackground,
+          backgroundColor: "rgba(17, 94, 89, 0.1)",
           border: "solid 1px",
           borderColor: theme.palette.customColors.border,
           borderRadius: 3,

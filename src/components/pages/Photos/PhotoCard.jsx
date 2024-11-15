@@ -22,13 +22,13 @@ export const PhotoCard = ({ thumbnailUrl, url, title, setModalData, id }) => {
             width: "100%",
             height: "100%",
             borderRadius: "12px",
-            border: "2px solid #2e2e2e",
+            border: "1px solid rgba(245, 245, 245, 0.2)",
           }}
         >
           <BrokenImageIcon
             sx={{
               fontSize: "60px",
-              color: "#2e2e2e",
+              color: "rgba(245, 245, 245, 0.2)",
             }}
           />
         </div>

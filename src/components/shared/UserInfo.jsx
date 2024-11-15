@@ -28,6 +28,7 @@ export const UserInfo = ({ userId, albumId = "" }) => {
         borderRadius: "12px",
         display: "flex",
         flexDirection: "column",
+        backgroundColor: "rgba(0, 0, 0, 0.2)",
       }}
     >
       <Grid
@@ -93,20 +94,19 @@ export const UserInfo = ({ userId, albumId = "" }) => {
         <Box
           sx={{
             width: "100%",
-            bgcolor: "rgba(255, 255, 255, 0.1)",
+            background:
+              "linear-gradient(90deg, rgba(19, 78, 74, 0.3) 0%, rgba(17, 94, 89, 0.5) 50%, rgba(42, 157, 143, 0.5) 100%)",
             p: 1,
-            borderTop: "solid",
+            borderTop: "1px solid",
             borderColor: theme.palette.customColors.border,
             display: "flex",
             justifyContent: "center",
+            borderBottomLeftRadius: 11,
+            borderBottomRightRadius: 11,
           }}
         >
           {isLoading ? (
-            <Skeleton
-              width="130px"
-              height={32}
-              sx={{ margin: "0 auto" }} 
-            />
+            <Skeleton width="130px" height={32} sx={{ margin: "0 auto" }} />
           ) : (
             <Typography align="center" sx={{ fontSize: "22px" }}>
               Álbum {albumId}

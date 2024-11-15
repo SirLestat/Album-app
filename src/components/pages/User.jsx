@@ -15,7 +15,6 @@ export const User = ({ user }) => {
 
   return (
     <Box
-      
       sx={{
         alignItems: "center",
         backgroundColor: theme.palette.customColors.itemBackground,
@@ -24,16 +23,11 @@ export const User = ({ user }) => {
         borderColor: theme.palette.customColors.border,
         padding: "40px",
         display: "flex",
-        alignItems: "center",
         justifyContent: "space-between",
         flexWrap: "wrap",
-        position: "relative", 
+        position: "relative",
       }}
     >
-      
-      
-
-      
       <Box
         sx={{
           display: "flex",
@@ -64,7 +58,7 @@ export const User = ({ user }) => {
             <Typography
               sx={{ display: "flex", alignItems: "center", gap: "5px" }}
             >
-              <PersonOutlineOutlinedIcon  sx={{ fontSize: "20px" }}/>
+              <PersonOutlineOutlinedIcon sx={{ fontSize: "20px" }} />
               {user.name}
             </Typography>
 
@@ -78,7 +72,6 @@ export const User = ({ user }) => {
         </Box>
       </Box>
 
-    
       <Button
         onClick={handleAlbumsClick}
         sx={{

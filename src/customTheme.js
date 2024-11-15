@@ -19,7 +19,7 @@ const customTheme = createTheme({
     customColors: {
       border: "rgba(42, 157, 143, 0.4)",
       itemBackground: "rgba(0, 0, 0, 0.4)",
-      button: "#2A9D8F",
+      button: "#258277",
       buttonHover: "#21867A",
     },
   },
@@ -27,7 +27,7 @@ const customTheme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          background: "linear-gradient(10deg, #115e59 0%, #121212 100%)",
+          background: "linear-gradient(135deg, #18181b 0%, #09090b 100%)",
           backgroundRepeat: "no-repeat",
           margin: 0,
           padding: 0,
