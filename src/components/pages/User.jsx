@@ -132,7 +132,9 @@ export const User = ({ user }) => {
             marginTop: "20px",
             width: { xs: "100%", md: "auto" },
             minWidth: { xs: "100%", md: "120px" },
-            padding: { xs: "8px 16px", md: "6px 16px" }
+            padding: { xs: "8px 16px", md: "6px 16px" },
+            borderRadius:"50px"
+            
           }}
         >
           <ImageOutlinedIcon />
