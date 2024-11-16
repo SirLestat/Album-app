@@ -1,4 +1,4 @@
-import { Box, Button, Typography, useTheme, Skeleton } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { gravatar } from "../../helpers/gravatar";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -19,32 +19,52 @@ export const User = ({ user }) => {
         alignItems: "center",
         backgroundColor: theme.palette.customColors.itemBackground,
         borderRadius: 3,
-        border: " 1px solid",
+        border: "1px solid",
         borderColor: theme.palette.customColors.border,
-        padding: "40px",
+        padding: { xs: "20px", sm: "40px" },
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: { xs: "center", sm: "space-between" },
         flexWrap: "wrap",
         position: "relative",
+        minHeight: "fit-content",
+        textAlign: { xs: "center", sm: "left" },
       }}
     >
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "flex-start",
+          justifyContent: { xs: "center", sm: "flex-start" },
           flexGrow: 1,
           gap: "20px",
+          flexDirection: { xs: "column", sm: "row" },
+          width: { xs: "100%", sm: "auto" },
         }}
       >
         <img
           src={gravatar(user.email)}
           alt="profile image"
-          style={{ borderRadius: "50%", width: "70px", height: "70px" }}
+          style={{
+            borderRadius: "50%",
+            width: "70px",
+            height: "70px",
+            objectFit: "cover",
+          }}
         />
-        <Box>
+
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: { xs: "center", sm: "flex-start" },
+          }}
+        >
           <Typography
             sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: { xs: "center", sm: "flex-start" },
               color: "#FFF",
               fontSize: "22px",
               fontWeight: 700,
@@ -54,16 +74,36 @@ export const User = ({ user }) => {
             {user.username}
           </Typography>
 
-          <Box sx={{ display: "flex", gap: "40px" }}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: { xs: "20px", sm: "40px" },
+              flexDirection: { xs: "column", sm: "row" },
+              width: "100%",
+              alignItems: { xs: "center", sm: "flex-start" },
+            }}
+          >
             <Typography
-              sx={{ display: "flex", alignItems: "center", gap: "5px" }}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: { xs: "center", sm: "flex-start" },
+                gap: "5px",
+                fontSize: { xs: "14px", sm: "16px" },
+              }}
             >
               <PersonOutlineOutlinedIcon sx={{ fontSize: "20px" }} />
               {user.name}
             </Typography>
 
             <Typography
-              sx={{ display: "flex", alignItems: "center", gap: "5px" }}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: { xs: "center", sm: "flex-start" },
+                gap: "5px",
+                fontSize: { xs: "14px", sm: "16px" },
+              }}
             >
               <EmailOutlinedIcon sx={{ fontSize: "20px" }} />
               {user.email}
@@ -71,31 +111,34 @@ export const User = ({ user }) => {
           </Box>
         </Box>
       </Box>
-
-      <Button
-        onClick={handleAlbumsClick}
-        sx={{
-          backgroundColor: theme.palette.customColors.button,
-          color: "#FFF",
-          "&:hover": {
-            backgroundColor: theme.palette.customColors.buttonHover,
-          },
-          textTransform: "none",
-          paddingRight: "",
-          marginRight: "15px",
-          gap: "5px",
-          display: "flex",
-          alignItems: "center",
-
-          "@media (max-width: 750px)": {
-            width: "100%",
+      <Box sx={{
+          display: "flex", 
+          justifyContent: "center",
+          width: { xs: "90%", sm:"100%",md: "auto" }
+        }}>
+        <Button
+          onClick={handleAlbumsClick}
+         sx={{
+            backgroundColor: theme.palette.customColors.button,
+            color: "#FFF",
+            "&:hover": {
+              backgroundColor: theme.palette.customColors.buttonHover,
+            },
+            textTransform: "none",
+            gap: "5px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             marginTop: "20px",
-          },
-        }}
-      >
-        <ImageOutlinedIcon />
-        Álbumes
-      </Button>
+            width: { xs: "100%", md: "auto" },
+            minWidth: { xs: "100%", md: "120px" },
+            padding: { xs: "8px 16px", md: "6px 16px" }
+          }}
+        >
+          <ImageOutlinedIcon />
+          Álbumes
+        </Button>
+      </Box>
     </Box>
   );
 };

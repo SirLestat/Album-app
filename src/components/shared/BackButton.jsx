@@ -24,10 +24,12 @@ export const BackButton = ({
         "&:hover": {
           backgroundColor: theme.palette.customColors.buttonHover,
         },
+        borderRadius:"50px"
       }}
     >
       {text}
     </Button>
+    
   );
 };
 

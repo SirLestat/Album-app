@@ -1,9 +1,15 @@
-import { IconButton, Container, Box, useTheme, Skeleton } from "@mui/material";
+import {
+  IconButton,
+  Container,
+  Box,
+  useTheme,
+  Skeleton,
+  Button,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-
 
 export const Panel = ({ modalData, setModalData }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -52,25 +58,27 @@ export const Panel = ({ modalData, setModalData }) => {
                 height: {
                   xs: "auto",
                   sm: error ? "auto" : "auto",
-                  xl: error ? "auto" : "640px",
+                  xl: error ? "auto" : "auto",
                 },
               }}
             >
-              <IconButton
-                onClick={() => setModalData({ url: null, title: null })}
-                sx={{
-                  position: "absolute",
-                  top: { xl: "-40px", xs: "-55px", md:"-40px" },
-                  right: { xl: "-40px", xs: "0px", md:"-40px"},
-                  color: "#FFF",
-                  backgroundColor: "rgba(255, 255, 255, 0.2)",
-                  "&:hover": {
-                    backgroundColor: `${theme.palette.customColors.button}`,
-                  },
-                }}
-              >
-                <CloseIcon sx={{ fontSize: "25px" }} />
-              </IconButton>
+              {isLoading && (
+                <IconButton
+                  onClick={() => setModalData({ url: null, title: null })}
+                  sx={{
+                    position: "absolute",
+                    top: { xl: "-40px", xs: "-55px", md: "-40px" },
+                    right: { xl: "-40px", xs: "0px", md: "-40px" },
+                    color: "#FFF",
+                    backgroundColor: "rgba(255, 255, 255, 0.2)",
+                    "&:hover": {
+                      backgroundColor: `${theme.palette.customColors.button}`,
+                    },
+                  }}
+                >
+                  <CloseIcon sx={{ fontSize: "25px" }} />
+                </IconButton>
+              )}
 
               {error ? (
                 <div
@@ -83,6 +91,22 @@ export const Panel = ({ modalData, setModalData }) => {
                 >
                   <ErrorOutlineIcon sx={{ fontSize: "35px" }} />
                   <p>Error al cargar la imagen.</p>
+                  <Button
+                    onClick={() => setModalData({ url: null, title: null })}
+                    sx={{
+                      color: "#fff",
+                      backgroundColor: theme.palette.customColors.button,
+                      textTransform: "none",
+                      marginBottom: "15px",
+                      "&:hover": {
+                        backgroundColor: theme.palette.customColors.buttonHover,
+                      },
+                      borderRadius: "50px",
+                      width: "100%",
+                    }}
+                  >
+                    Aceptar
+                  </Button>
                 </div>
               ) : (
                 isLoading && (
@@ -121,14 +145,38 @@ export const Panel = ({ modalData, setModalData }) => {
                   sx={{ marginTop: "12px", marginBottom: "12px" }}
                 />
               ) : (
-                <p
-                  style={{
-                    textAlign: "center",
-                    marginTop: "12px",
+                <Box
+                  sx={{
+                    width: { xs: "100%", md: "50%" },
+                    display: "flex",
+                    justifyContent: "center",
+                    flexDirection: "column",
                   }}
                 >
-                  {modalData.title}
-                </p>
+                  <p
+                    style={{
+                      textAlign: "center",
+                      marginTop: "12px",
+                    }}
+                  >
+                    {modalData.title}
+                  </p>
+                  <Button
+                    onClick={() => setModalData({ url: null, title: null })}
+                    sx={{
+                      color: "#fff",
+                      backgroundColor: theme.palette.customColors.button,
+                      textTransform: "none",
+                      marginBottom: "15px",
+                      "&:hover": {
+                        backgroundColor: theme.palette.customColors.buttonHover,
+                      },
+                      borderRadius: "50px",
+                    }}
+                  >
+                    Cerrar
+                  </Button>
+                </Box>
               )}
             </Container>
           </Box>,

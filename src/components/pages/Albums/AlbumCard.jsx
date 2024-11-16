@@ -11,9 +11,7 @@ export const AlbumCard = ({ item, userId }) => {
     <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 3 }}>
       <Card
         sx={{
-          backgroundColor: "rgba(17, 94, 89, 0.1)",
-          border: "solid 1px",
-          borderColor: theme.palette.customColors.border,
+          background: "linear-gradient(135deg, rgba(42, 157, 143, 0.7) 0%, rgba(17, 94, 89, 0.6) 50%, rgba(19, 78, 74, 0.5) 100%)",
           borderRadius: 3,
           display: "block",
           height: "100%",
