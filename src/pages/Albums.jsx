@@ -3,12 +3,14 @@ import { UserInfo } from "../components/shared/UserInfo";
 import { useParams } from "react-router-dom";
 import { BackButton } from "../components/shared/BackButton";
 import { AlbumList } from "../components/pages/Albums/AlbumList";
+import { Header } from "../components/shared/Header";
 
 const Albums = () => {
   const { userId } = useParams();
 
   return (
     <Grid container spacing={2}>
+      <Header />
       <Grid size={12}>
         <BackButton to="/" text="Regresar" />
         <UserInfo userId={userId} />

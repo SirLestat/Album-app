@@ -2,6 +2,7 @@ import { useState } from "react";
 import Grid from "@mui/material/Grid2";
 import { SearchForm } from "../components/pages/SearchForm";
 import { UserList } from "../components/pages/UserList";
+import { Header } from "../components/shared/Header";
 
 const Users = () => {
   const [search, setSearch] = useState("");
@@ -10,8 +11,10 @@ const Users = () => {
   };
 
   return (
-    <Grid container pt={6}>
-      <Grid component="form" size={6} offset={3}>
+    <Grid container pt={6} sx={{ paddingTop: 0 }}>
+      <Header />
+      
+      <Grid component="form" size={12} offset={0} sx={{ paddingTop: "48px" }}>
         <SearchForm onChange={handleSearchFormChange} value={search} />
       </Grid>
       <Grid size={12}>

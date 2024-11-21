@@ -9,6 +9,7 @@ import { Button } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { useNavigate } from "react-router-dom";
+import { Header } from "../components/shared/Header";
 
 export const Photos = () => {
   const [modalData, setModalData] = useState({ url: null, title: null });
@@ -20,6 +21,7 @@ export const Photos = () => {
     <>
       <Panel modalData={modalData} setModalData={setModalData} />
       <Grid container size={12}>
+        <Header />
         <Grid size={12}>
           <BackButton to={`/${userId}/albums`} />
           <Button
@@ -31,9 +33,8 @@ export const Photos = () => {
                 backgroundColor: theme.palette.customColors.buttonHover,
               },
               marginLeft: "10px",
-              borderRadius:"30px",
-              height:"36.5px",
-            
+              borderRadius: "30px",
+              height: "36.5px",
             }}
           >
             <HomeOutlinedIcon
