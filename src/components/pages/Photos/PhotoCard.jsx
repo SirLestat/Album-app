@@ -2,7 +2,7 @@ import { Skeleton } from "@mui/material";
 import { useState } from "react";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 
-export const PhotoCard = ({ thumbnailUrl, url, title, setModalData, id }) => {
+export const PhotoCard = ({ url,setModalData, author }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -10,7 +10,7 @@ export const PhotoCard = ({ thumbnailUrl, url, title, setModalData, id }) => {
     <div style={{ position: "relative", width: "100%", paddingTop: "100%" }}>
       {error ? (
         <div
-          onClick={() => setModalData({ url, title })}
+          onClick={() => setModalData({ url, author })}
           style={{
             cursor: "pointer",
             display: "flex",
@@ -49,11 +49,11 @@ export const PhotoCard = ({ thumbnailUrl, url, title, setModalData, id }) => {
         )
       )}
       <img
-        onClick={() => setModalData({ url, title })}
+        onClick={() => setModalData({ url, author })}
         onLoad={() => setIsLoading(false)}
         onError={() => setError(true)}
-        src={thumbnailUrl}
-        alt={`thumbnail${id}`}
+        src={url}
+        alt={`author: ${author}`}
         style={{
           position: "absolute",
           top: 0,

@@ -25,7 +25,7 @@ export const Header = () => {
           display: "flex",
           alignItems: "center",
           paddingLeft: { xs: "0px", sm: "0px", md: "40px", lg: "40px" },
-          gap: { xs: "0px", sm: "0px", md: "20px", lg: "20px", xl:"20px" },
+          gap: { xs: "0px", sm: "0px", md: "20px", lg: "20px", xl: "20px" },
           flexDirection: { xs: "column", md: "row", lg: "row" },
         }}
       >
@@ -44,25 +44,37 @@ export const Header = () => {
           }}
         >
           <Box>
-            <Box sx={{paddingBottom:"5px"}}>
+            <Box sx={{ paddingBottom: "5px" }}>
               <Typography variant="h5">Album App</Typography>
             </Box>
 
-            <Box sx={{display:"flex",flexDirection:{xs:"column", sm:"row", md:"row", lg:"row", xl:"row"}, gap:"10px"}}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: {
+                  xs: "column",
+                  sm: "row",
+                  md: "row",
+                  lg: "row",
+                  xl: "row",
+                },
+                gap: "10px",
+              }}
+            >
               <Typography
-                sx={{ display: "flex", alignItems: "center", gap: "5px" }}
+                sx={{ display: "flex", justifyContent: "center", gap: "5px" }}
               >
                 <PersonOutlineOutlinedIcon />
                 10 Usuarios
               </Typography>
               <Typography
-                sx={{ display: "flex", alignItems: "center", gap: "5px" }}
+                sx={{ display: "flex", justifyContent: "center", gap: "5px" }}
               >
                 <CollectionsOutlinedIcon />
                 100 Álbumes
               </Typography>
               <Typography
-                sx={{ display: "flex", alignItems: "center", gap: "5px" }}
+                sx={{ display: "flex", justifyContent: "center", gap: "5px" }}
               >
                 <PhotoCameraOutlinedIcon />
                 5K Fotos

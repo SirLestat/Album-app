@@ -159,7 +159,7 @@ export const Panel = ({ modalData, setModalData }) => {
                       marginTop: "12px",
                     }}
                   >
-                    {modalData.title}
+                    {modalData.author}
                   </p>
                   <Button
                     onClick={() => setModalData({ url: null, title: null })}
