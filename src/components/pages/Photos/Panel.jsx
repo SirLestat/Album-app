@@ -153,14 +153,15 @@ export const Panel = ({ modalData, setModalData }) => {
                     flexDirection: "column",
                   }}
                 >
-                  <p
+                  <span
                     style={{
                       textAlign: "center",
                       marginTop: "12px",
+                      marginBottom:"12px"
                     }}
                   >
-                    {modalData.author}
-                  </p>
+                   Autor:&nbsp;{modalData.author}
+                  </span>
                   <Button
                     onClick={() => setModalData({ url: null, title: null })}
                     sx={{
