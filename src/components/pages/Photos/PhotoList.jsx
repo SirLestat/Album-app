@@ -25,7 +25,7 @@ export const PhotoList = ({ setModalData, albumId }) => {
   }, [albumId]);
   return (
     <div>
-      <Button
+      {/* <Button
         variant="contained"
         startIcon={<RefreshOutlinedIcon />}
         onClick={fetchData}
@@ -42,7 +42,7 @@ export const PhotoList = ({ setModalData, albumId }) => {
         }}
       >
         Actualizar Albúm
-      </Button>
+      </Button> */}
       <Grid container spacing={2} sx={{ mt: "15px", mb: "15px" }}>
         {isLoading
           ? createArray(30).map((item) => (
